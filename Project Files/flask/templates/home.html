@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Payments Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            /* Reduced width */
+            margin: 0 auto;
+            padding: 10px 20px;
+            /* Reduced padding */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation buttons - Top Right */
+        .nav-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-bottom: 10px;
+            /* Reduced gap */
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #0288d1;
+            color: #0288d1;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: #0288d1;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Main title */
+        .main-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            /* Reduced gap */
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Content card */
+        .content-card {
+            /* background: rgba(255, 255, 255, 0.95); */
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 2px 8px 25px rgba(0, 0, 0, 0.15);
+            margin-top: 10px;
+            /* Small controlled spacing */
+        }
+
+        .description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #ffffff;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .description strong {
+            color: #0288d1;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #0288d1 0%, #023f6d 100%);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .action-btn.secondary {
+            background: linear-gradient(135deg, #4f9e52 0%, #034507 100%);
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 22px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .content-card {
+                padding: 15px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <a href="/" class="nav-btn">Home</a>
+            <a href="/predict" class="nav-btn">Predict</a>
+        </div>
+
+        <!-- Main title -->
+        <h1 class="main-title">Online Payments Fraud Detection</h1>
+
+        <!-- Content card -->
+        <div class="content-card">
+
+            <p class="description">
+                Welcome to the <strong>Online Payments Fraud Detection System</strong>.
+                This advanced machine learning application helps identify fraudulent transactions
+                in real-time by analyzing important transaction parameters such as transaction amount,
+                account balance before and after transaction, transaction type, and other behavioral indicators.
+            </p>
+
+            <p class="description">
+                The main objective of this system is to predict whether an online payment transaction
+                is fraudulent or legitimate based on various input parameters. This is a
+                <strong>classification problem</strong>, where the target variable (fraud)
+                contains categorical values such as Fraud or Not Fraud.
+            </p>
+
+            <p class="description">
+                Fraud detection plays a critical role in securing digital payment systems.
+                The purpose of this model is to classify online transactions into different
+                categories based on their legitimacy and help financial systems prevent
+                financial losses, identity theft, and cybercrime activities.
+            </p>
+
+            <p class="description">
+                To achieve high accuracy and reliability, we implement multiple machine learning
+                classification algorithms including <strong>Decision Tree</strong>,
+                <strong>Random Forest</strong>, <strong>Support Vector Machine (SVM)</strong>,
+                and <strong>Extra Trees Classifier</strong>.
+                These models are trained and tested using historical transaction data to
+                evaluate their performance in terms of precision, recall, and overall accuracy.
+            </p>
+
+            <p class="description">
+                After training, the best-performing model is used to make real-time predictions,
+                ensuring efficient fraud detection with minimal false alarms and maximum protection
+                for online payment users.
+            </p>
+
+            <div class="action-buttons">
+                <a href="/predict" class="action-btn">Start Prediction</a>
+                <a href="/" class="action-btn secondary">Learn More</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

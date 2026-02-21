@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - Online Payments Fraud Detection</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Same container structure as form page */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Nav header */
+        .nav-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #0288d1;
+            color: #0288d1;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: #0288d1;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Title */
+        .main-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Result card (same structure style as form-card) */
+        .result-card {
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 2px 8px 25px rgba(0, 0, 0, 0.15);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .prediction-text {
+            font-size: 18px;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .prediction-result {
+            font-size: 24px;
+            font-weight: 700;
+            padding: 12px 30px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 15px auto;
+            text-align: center;
+        }
+
+        .prediction-result.fraud {
+            background: linear-gradient(135deg, #bc2b2b 0%, #931818 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+        }
+        
+        .prediction-result.not-fraud {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+        }
+
+        .prediction-result.error {
+            background: linear-gradient(135deg, #eb8e02 0%, #c36202 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+        }
+
+        .action-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #027bbc 0%, #014070 100%);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .action-btn.secondary {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 22px;
+            }
+
+            .prediction-text {
+                font-size: 16px;
+            }
+
+            .prediction-result {
+                font-size: 20px;
+                padding: 10px 20px;
+            }
+
+            .result-card {
+                padding: 15px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <a href="/" class="nav-btn">Home</a>
+            <a href="/predict" class="nav-btn">Predict</a>
+        </div>
+
+        <!-- Main title -->
+        <h1 class="main-title">Online Payments Fraud Detection</h1>
+
+        <!-- Result card -->
+        <div class="result-card">
+            <p class="prediction-text">
+                The predicted fraud for the online payment is
+            </p>
+
+            {% if prediction %}
+            {% if 'Fraud' in prediction %}
+            <div class="prediction-result fraud">{{ prediction }}</div>
+            {% elif 'Error' in prediction %}
+            <div class="prediction-result error">{{ prediction }}</div>
+            {% else %}
+            <div class="prediction-result not-fraud">{{ prediction }}</div>
+            {% endif %}
+            {% else %}
+            <div class="prediction-result error">No prediction available</div>
+            {% endif %}
+
+            <div class="action-buttons">
+                <a href="/predict" class="action-btn">Predict Another</a>
+                <a href="/" class="action-btn secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
