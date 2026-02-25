@@ -1,7 +1,7 @@
 📂 Project Documents Structure
 
 
-📌 1️⃣ Ideation Phase
+1️⃣ Ideation Phase
 Brainstorming- Idea Generation- Prioritizaation.pdf
 
 Define Problem Statements.pdf
@@ -10,7 +10,7 @@ Empathy Map Canvas.pdf
 
 This phase includes idea generation, problem identification, customer understanding, and concept validation for the fraud detection system.
 
-📌 2️⃣ Requirement Analysis
+2️⃣ Requirement Analysis
 Customer journey map for fraud detection.pdf
 
 Data Flow Diagrams and User Stories.pdf
@@ -31,7 +31,7 @@ System Data Flow
 
 Technology selection
 
-📌 3️⃣ Project Design Phase
+3️⃣ Project Design Phase
 Problem - Solution Fit.pdf
 
 Proposed Solution.pdf
@@ -46,7 +46,7 @@ System architecture design
 
 Technical architecture planning
 
-📌 4️⃣ Project Planning Phase
+4️⃣ Project Planning Phase
 Project Planning.pdf
 
 This phase covers:
@@ -59,7 +59,7 @@ Timeline management
 
 Milestone tracking
 
-📌 5️⃣ Project Development Phase
+5️⃣ Project Development Phase
 Machine Learning.pdf
 
 User Acceptance Testing Report.pdf
