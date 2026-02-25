@@ -1,6 +1,3 @@
-🛡️ Online Payments Fraud Detection using Machine Learning
-A Machine Learning-based web application designed to detect fraudulent online payment transactions using classification algorithms and real-time prediction through a Flask web interface.
-
 📂 Project Documents Structure
 This repository is organized into structured project phases covering the complete Software Development Life Cycle (SDLC).
 
