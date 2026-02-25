@@ -1,5 +1,5 @@
 📂 Project Documents Structure
-This repository is organized into structured project phases covering the complete Software Development Life Cycle (SDLC).
+
 
 📌 1️⃣ Ideation Phase
 Brainstorming- Idea Generation- Prioritizaation.pdf
