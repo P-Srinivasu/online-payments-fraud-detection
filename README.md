@@ -1,4 +1,4 @@
-# Online Payments Fraud Detection
+# Online Payments Fraud Detection using Machine Learning
 
 A comprehensive machine learning project for detecting fraudulent online payment transactions using advanced ML algorithms.
 
